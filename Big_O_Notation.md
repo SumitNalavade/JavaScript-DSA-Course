@@ -4,13 +4,15 @@ How do we determine which is best?
 
 <strong> Big O Notation allows us to classify and compare different implementations of code and discuss their tradeoffs. </strong>
 
+It allows us to talk formally about how the runtime of an algorithm grows as the inputs grow.
+
 ## Timing Our Code
 We can use the performance.now() function to measure the number of miliseconds elapsed since the program was started.  
 
 However, there are certain drawbacks:
 - Different machines will record different times
 - The same machine will record different times
-- For fast algorithims, speed measurements may not be precise enough
+- For fast algorithms, speed measurements may not be precise enough
 
 <strong> Example: </strong>  
 ```
@@ -58,3 +60,48 @@ Instead of counting the number of seconds, we can instead count the number of op
 
 Regardless of the exact number of operations, for ```addUpTo(n)```, the number of operations performance will grow with ```n```
 while ```addUpToModified(n)``` will remain constant
+
+## Big O Definition
+We say that an algorithms is O(f(n)) if the number of simple operations the computer has to do is eventually less than a constant times f(n) as n increases.
+
+- f(n) could be linear (f(n) = n)
+- f(n) could be quadratic (f(n) = n^2)
+- f(n) could be constant (f(n) = 1)
+- f(n) could be something entirely different
+
+<strong>Example: </strong>  
+```addUpTo(n)``` is linear, ```O(n)``` because the number of operations increases as the number of inputs ```n``` increases.  
+
+```addUpToModified(n)``` is constant ```O(1)``` because the number of operations remains 3 regardless of the number of inputs.
+
+<strong>Example: </strong>
+```
+function countUpAndDown(n) {
+  console.log("Going Up!");
+  for (let i = 0; i < n; i++) {
+    console.log(i);
+  }
+
+  console.log("At the top!\nGoing down...");
+  for(let j = n - 1; j >= 0; j--) {
+    console.log(j);
+  }
+}
+
+countUpAndDown(10);
+```
+We may think of this function as having a time complexity of ```O(2n)```, however we care about the bigger picture, so we say the time complexity is ```O(n)``` since the number of operations increase proportionally to the number of inputs
+
+<strong>Example: </strong>
+```
+function printAllPairs(n) {
+  for(let i = 0; i < n; i++) {
+    for(let j = 0; j < n; j++) {
+      console.log(i, j);
+    }
+  }
+}
+
+printAllPairs(10);
+```
+This function has a time complexity of ```O(n^2)``` since the number of operations square as ```n``` increases.
