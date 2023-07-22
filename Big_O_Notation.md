@@ -121,3 +121,39 @@ When determining time complexities, there are some helpful rules for Big O expre
 - <strong>Variable assignments are constant</strong>
 - <strong>Accessing elements in an array or object is constant</strong>
 - <strong>In a loop, the complexity is the length of the loop times the complexity of whatever happens inside the loop</strong>
+
+## Space Complexity
+We can also use Big O notation to analyze space complexity:   
+<strong>How much additional memory do we need to allocate in order to run our code</strong>
+
+We focus on <strong>auxiliary space complexity:</strong> to refer to space required by the algorithm, not the space taken up by the inputs
+
+- <strong>Most primitives (booleans, numbers, undefined) are constant space</strong>
+- <strong>Strings require O(n) space (where ```n``` is the string length) </strong>
+- <strong>Reference types, like arrays and objects, are generally ```O(n)```</strong>
+
+<strong>Example: </strong>
+```
+function sum(arr) {
+  let total = 0;
+  for(let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+
+  return total;
+}
+```
+This function has a space complexity of ```O(1)``` because, we only assign one variable per iteration of the loop, regardless of the number of times we loop
+
+<strong>Example: </strong>
+```
+function double(arr) {
+  let newArray = [];
+  for(let i = 0; i < arr.length; i++) {
+    newArray.push(2 * arr[i]);
+  }
+
+  return newArray;
+}
+```
+This function has a space complexity of ```O(n)``` because the amount of space taken up by ```newArray``` increases per iteration of the loop
