@@ -104,4 +104,20 @@ function printAllPairs(n) {
 
 printAllPairs(10);
 ```
-This function has a time complexity of ```O(n^2)``` since the number of operations square as ```n``` increases.
+This function has a time complexity of ```O(n^2)``` since the number of operations square as ```n``` increases due to a nested loop.
+
+## Simplifying Big O Expressions
+When determining time complexities, there are some helpful rules for Big O expressions
+
+- <strong>Constants don't matter</strong>
+  - ~~O(2n)~~ O(n)
+  - ~~O(500)~~ O(1)
+  - ~~O(13n^2)~~ O(n^2)
+- <strong>Smaller terms don't matter</strong>
+  - ~~O(n + 10)~~ O(n)
+  - ~~O(1000n + 50)~~ O(n)
+  - ~~O(n^2 + 5n + 8)~~ O(n^2)
+- <strong>Arithmetic operations are constant</strong>
+- <strong>Variable assignments are constant</strong>
+- <strong>Accessing elements in an array or object is constant</strong>
+- <strong>In a loop, the complexity is the length of the loop times the complexity of whatever happens inside the loop</strong>
