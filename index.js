@@ -1,9 +1,10 @@
-function printAllPairs(n) {
-  for(let i = 0; i < n; i++) {
-    for(let j = 0; j < n; j++) {
-      console.log(i, j);
-    }
+function double(arr) {
+  let newArray = [];
+  for(let i = 0; i < arr.length; i++) {
+    newArray.push(2 * arr[i]);
   }
+
+  return newArray;
 }
 
-printAllPairs(10);
+console.log(double([1,2,3]))
