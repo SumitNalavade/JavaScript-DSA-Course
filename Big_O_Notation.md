@@ -157,3 +157,11 @@ function double(arr) {
 }
 ```
 This function has a space complexity of ```O(n)``` because the amount of space taken up by ```newArray``` increases per iteration of the loop
+
+## Logarithms
+Logarithms are the inverse of exponentiation
+
+The logarithm of a number roughly measures the number of times you can divide that number by 2 before you get a value that's less than or equal to one
+
+<strong>Logarithmic time complexity is great!</strong>  
+<strong>Efficient sorting algorithms have logarithmic time complexity</strong>
