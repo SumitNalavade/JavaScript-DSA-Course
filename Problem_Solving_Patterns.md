@@ -162,3 +162,55 @@ function anagram(str1, str2) {
   return true
 }
 ```
+
+## Multiple Pointers
+Creating pointers that correspond to an index or position and moves towards the beginning, end or middle based on a certain condition
+
+<strong>Very</strong> efficient for solving problems with minimal space complexity as well
+
+<strong>Example: </strong>  
+Write a function called <strong>sumZero</strong> which accepts a <strong>sorted</strong> array of integers.  
+The function should find the <strong>first pair</strong> where the sum is 0  
+Return an array that includes both values that sum to zero or undefined if a pair doesn't exist
+
+<strong>Initial Approach:</strong>
+```
+function sumZero(arr) {
+  for(let i = 0; i < arr.length; i++)  {
+    const firstVal = arr[i];
+
+    for(let j = i + 1; j < arr.length; j++ ) {
+      const secondVal = arr[j];
+
+      if(firstVal < 0 && secondVal < 0 || firstVal > 0 & secondVal > 0) continue
+
+      if(firstVal + secondVal === 0) {
+        return [firstVal, secondVal]
+      }
+    }
+  }
+}
+```
+
+<strong>Refactored Approach:</strong>
+```
+function sumZero(arr) {
+  let leftPointer = 0;
+  let rightPointer = arr.length - 1;
+
+  while(leftPointer < rightPointer) {
+    const sum = arr[leftPointer] + arr[rightPointer];
+
+    if(sum === 0) {
+      return [arr[leftPointer], arr[rightPointer]];
+    } else if(sum < 0) {
+      leftPointer++
+    } else {
+      rightPointer--
+    }
+  }
+}
+```
+
+
+
