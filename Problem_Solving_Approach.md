@@ -18,7 +18,6 @@ An algorithm is a process or set of steps to accomplish a certain task.
   - ```
     charCount('aaaa') -> {'a': 4}
     charCount("hello") -> {'h': 1, 'e': 1, 'l': 2, 'o': 1}
-    ```
 - <strong>Progress to more complex examples</strong>
   - Should we include numbers, spaces and capitalized letters?
 - <strong>Explore examples with empty inputs</strong>
@@ -29,7 +28,7 @@ An algorithm is a process or set of steps to accomplish a certain task.
 ## Step 3: Break It Down
 Explicitly write down the steps you need to take
 
-```
+```js
 function charCount(str) {
   // doSomething
 
@@ -37,7 +36,7 @@ function charCount(str) {
 }
 ```
 
-```
+```js
 function charCount(str) {
   // Make object to return at end
 
@@ -52,7 +51,7 @@ function charCount(str) {
 ## Step 4: Solve Or Simplify
 Solve the problem, or solve a simpler problem
 
-```
+```js
 function charCount(str) {
   // Make object to return at end
   const result = {};
@@ -75,6 +74,8 @@ function charCount(str) {
 
   return result;
 }
+
+console.log(charCount("hello"))
 ```
 
 ## Step 5: Look Back And Refactor
@@ -87,7 +88,7 @@ function charCount(str) {
 - Can you think of other ways to Refactor
 - How have other people solved this problem
 
-```
+```js
 function charCount(str) {
   const val = str.toLowerCase();
 

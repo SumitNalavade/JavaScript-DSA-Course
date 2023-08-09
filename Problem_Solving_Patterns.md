@@ -10,7 +10,7 @@ The function should return true if every value in the array has it's correspondi
 The frequency of values must be the same.
 
 <strong>Initial Approach: </strong>
-```
+```js
 function same(arr1, arr2) {
   /*
     Create an object to hold the values of array1 as keys along with it's square and count as values
@@ -54,8 +54,7 @@ function same(arr1, arr2) {
 ```
 
 <strong>Refactored Approach</strong>  
-```
-
+```js
 function sameRefactored(arr1, arr2) {
   if(arr1.length !== arr2.length) {
     return false
@@ -114,7 +113,7 @@ However, the second approaches uses three seperate loops, with a final time comp
 
 <strong>Example: </strong>  
 Given two strings, write a function to determine if the second string is an anagram of the first.
-```
+```js
 anagram('', '') // true
 anagram('aaz', 'zza') // false
 anagram('anagram', 'nagaram') // true
@@ -123,7 +122,7 @@ anagram('awesome', 'awesom') // false
 ```
 
 <strong>Initial Approach: </strong>
-```
+```js
 function anagram(str1, str2) {
   // If both strings aren't the same length, return false
   if(str1.length !== str2.length) {
@@ -174,7 +173,7 @@ The function should find the <strong>first pair</strong> where the sum is 0
 Return an array that includes both values that sum to zero or undefined if a pair doesn't exist
 
 <strong>Initial Approach:</strong>
-```
+```js
 function sumZero(arr) {
   for(let i = 0; i < arr.length; i++)  {
     const firstVal = arr[i];
@@ -193,7 +192,7 @@ function sumZero(arr) {
 ```
 
 <strong>Refactored Approach:</strong>
-```
+```js
 function sumZero(arr) {
   let leftPointer = 0;
   let rightPointer = arr.length - 1;

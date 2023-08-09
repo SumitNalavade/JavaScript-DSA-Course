@@ -15,7 +15,7 @@ However, there are certain drawbacks:
 - For fast algorithms, speed measurements may not be precise enough
 
 <strong> Example: </strong>  
-```
+```js
 // The following two functions both add up numbers up to a certain number (n)
 
 function addUpTo(n) {
@@ -75,7 +75,7 @@ We say that an algorithms is O(f(n)) if the number of simple operations the comp
 ```addUpToModified(n)``` is constant ```O(1)``` because the number of operations remains 3 regardless of the number of inputs.
 
 <strong>Example: </strong>
-```
+```js
 function countUpAndDown(n) {
   console.log("Going Up!");
   for (let i = 0; i < n; i++) {
@@ -93,7 +93,7 @@ countUpAndDown(10);
 We may think of this function as having a time complexity of ```O(2n)```, however we care about the bigger picture, so we say the time complexity is ```O(n)``` since the number of operations increase proportionally to the number of inputs
 
 <strong>Example: </strong>
-```
+```js
 function printAllPairs(n) {
   for(let i = 0; i < n; i++) {
     for(let j = 0; j < n; j++) {
@@ -133,7 +133,7 @@ We focus on <strong>auxiliary space complexity:</strong> to refer to space requi
 - <strong>Reference types, like arrays and objects, are generally ```O(n)```</strong>
 
 <strong>Example: </strong>
-```
+```js
 function sum(arr) {
   let total = 0;
   for(let i = 0; i < arr.length; i++) {
@@ -146,7 +146,7 @@ function sum(arr) {
 This function has a space complexity of ```O(1)``` because, we only assign one variable per iteration of the loop, regardless of the number of times we loop
 
 <strong>Example: </strong>
-```
+```js
 function double(arr) {
   let newArray = [];
   for(let i = 0; i < arr.length; i++) {
