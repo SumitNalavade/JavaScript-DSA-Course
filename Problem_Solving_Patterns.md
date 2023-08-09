@@ -1,5 +1,3 @@
-# Problem Solving Patterns
-
 ## Frequency Counter
 This pattern uses objects or sets to collect values/frequencies of values.  
 This can often avoid the need for nested loops or O(n^2) operations with arrays/strings
@@ -8,6 +6,12 @@ This can often avoid the need for nested loops or O(n^2) operations with arrays/
 Write a function called <strong>same</strong>, which accepts two arrays.  
 The function should return true if every value in the array has it's corresponding value squared in the second array.  
 The frequency of values must be the same.
+
+```js
+same([1,2,3], [4,1,9]) // true
+same([1,2,3], [1,9]) // false
+same([1,2,1], [4,4,1]) // false
+```
 
 <strong>Initial Approach: </strong>
 ```js
@@ -51,6 +55,10 @@ function same(arr1, arr2) {
 
   return true
 }
+
+console.log(same([1,2,3], [4,1,9]))
+console.log(same([1,2,3], [1,9]))
+console.log(same([1,2,1], [4,4,1]))
 ```
 
 <strong>Refactored Approach</strong>  
@@ -105,6 +113,10 @@ function sameRefactored(arr1, arr2) {
 
   return true
 }
+
+console.log(same([1,2,3], [4,1,9]))
+console.log(same([1,2,3], [1,9]))
+console.log(same([1,2,1], [4,4,1]))
 ```
 
 Here, the initial approach uses the array.filter() method within a for loop which gives it a time complexity of O(n^2)  
@@ -160,6 +172,12 @@ function anagram(str1, str2) {
 
   return true
 }
+
+console.log(anagram('', ''))
+console.log(anagram('aaz', 'zza'))
+console.log(anagram('anagram', 'nagaram'))
+console.log(anagram('rat', 'car'))
+console.log(anagram('awesome', 'awesom'))
 ```
 
 ## Multiple Pointers
@@ -171,6 +189,12 @@ Creating pointers that correspond to an index or position and moves towards the 
 Write a function called <strong>sumZero</strong> which accepts a <strong>sorted</strong> array of integers.  
 The function should find the <strong>first pair</strong> where the sum is 0  
 Return an array that includes both values that sum to zero or undefined if a pair doesn't exist
+
+```js
+sumZero([-3, -2, -1, 0, 1, 2, 3]) // [-3,3]
+sumZero([-2, 0, 1, 3]) // undefined
+sumZero([1, 2, 3]) // undefined
+```
 
 <strong>Initial Approach:</strong>
 ```js
@@ -189,6 +213,10 @@ function sumZero(arr) {
     }
   }
 }
+
+console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]))
+console.log(sumZero([-2, 0, 1, 3]))
+console.log(sumZero([1, 2, 3]))
 ```
 
 <strong>Refactored Approach:</strong>
@@ -209,7 +237,88 @@ function sumZero(arr) {
     }
   }
 }
+
+console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]))
+console.log(sumZero([-2, 0, 1, 3]))
+console.log(sumZero([1, 2, 3]))
 ```
 
+## Sliding Window
+This pattern involves creating a **window** which can either be an array or number from one position to another
 
+Depending on a certain condition, the window either increases or closes (and a new window is created)
 
+Very useful for keeping track of data in an array/string
+
+**Example:**
+```js
+maxSubarraySum([1,2,5,2,8,1,5], 2) // 10
+maxSubarraySum([1,2,5,2,8,1,5], 4) // 17
+maxSubarraySum([4,2,1,6], 1) // 6
+maxSubarraySum([4,2,1,6,2], 4) // 13
+maxSubarraySum([], 4) // null
+```
+
+**Initial Approach:**
+```js
+function maxSubarraySum(arr, n) {
+	if(n > arr.length) {
+		return null;
+	}
+
+	let sum = -Infinity;
+	
+	let j = n - 1
+	for(let i = 0; i < arr.length; i++) {
+	
+		let count = 0;
+	
+		for(let x = i; x <= j; x++) {
+			count += arr[x]
+		}
+	
+		if(count > sum) {
+			sum = count
+		}
+	
+		j++;
+	}
+	return sum
+}
+
+console.log(maxSubarraySum([1,2,5,2,8,1,5], 2))
+console.log(maxSubarraySum([1,2,5,2,8,1,5], 4))
+console.log(maxSubarraySum([4,2,1,6], 1))
+console.log(maxSubarraySum([4,2,1,6,2], 4))
+console.log(maxSubarraySum([], 4))
+```
+
+**Refactored Approach**
+```js
+function maxSubarraySum(arr, n) {
+	let maxSum = 0;
+	let tempSum = 0;
+
+	if(arr.length < n) return null
+
+	// Sum together the first n digits
+	for(let i = 0; i < n; i++) {
+		maxSum += arr[i];
+	}
+	tempSum = maxSum;
+
+	// Starting at index n, remove the first value and add the next value for    each iteration and compare
+	for(let i = n; i < arr.length; i++) {
+		tempSum = tempSum - arr[i - n] + arr[i];
+		maxSum = Math.max(maxSum, tempSum);
+	}
+	
+	return maxSum;
+}
+
+console.log(maxSubarraySum([1,2,5,2,8,1,5], 2))
+console.log(maxSubarraySum([1,2,5,2,8,1,5], 4))
+console.log(maxSubarraySum([4,2,1,6], 1))
+console.log(maxSubarraySum([4,2,1,6,2], 4))
+console.log(maxSubarraySum([], 4))
+```
